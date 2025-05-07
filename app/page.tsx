@@ -17,48 +17,54 @@ type InstallSteps = {
 export default function Home() {
   const [activeTab, setActiveTab] = useState<'install' | 'monitor' | 'observe'>('install');
   const [activeFeature, setActiveFeature] = useState<'installation' | 'security' | 'insights' | 'developers'>('installation');
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Create twinkling stars effect
-    const container = document.querySelector('.stars-container');
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      if (star instanceof HTMLElement) {
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.animationDelay = `${Math.random() * 1}s`;
-      }
-      container?.appendChild(star);
-    }
-
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+    setIsMounted(true);
+    
+    // Only run DOM manipulation code after component is mounted on the client
+    if (typeof window !== 'undefined') {
+      // Create twinkling stars effect
+      const container = document.querySelector('.stars-container');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        if (star instanceof HTMLElement) {
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.top = `${Math.random() * 100}%`;
+          star.style.animationDelay = `${Math.random() * 1}s`;
         }
+        container?.appendChild(star);
+      }
+
+      // Intersection Observer for scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px'
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px'
-    });
 
-    // Observe elements
-    const elements = [
-      document.getElementById('about-section'),
-      document.getElementById('about-title'),
-      document.getElementById('about-features'),
-      document.getElementById('dot-pattern')
-    ];
+      // Observe elements
+      const elements = [
+        document.getElementById('about-section'),
+        document.getElementById('about-title'),
+        document.getElementById('about-features'),
+        document.getElementById('dot-pattern')
+      ];
 
-    elements.forEach(element => {
-      if (element) observer.observe(element);
-    });
+      elements.forEach(element => {
+        if (element) observer.observe(element);
+      });
 
-    return () => observer.disconnect();
-  }, []);
+      return () => observer.disconnect();
+    }
+  }, [isMounted]);
 
   const installationSteps: InstallSteps = {
     install: {
@@ -103,19 +109,11 @@ cylestio-dashboard`,
           <span className="text-xl font-bold">Cylestio</span>
         </div>
         <div className="flex items-center space-x-4">
-          <a href="https://pypi.org/project/cylestio-monitor/" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
-            <Terminal className="w-4 h-4" />
-            <span>pip</span>
-          </a>
-          <a href="https://www.npmjs.com/package/cylestio-dashboard" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
-            <Terminal className="w-4 h-4" />
-            <span>npm</span>
-          </a>
-          <a href="https://docs.cylestio.com" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+          <a href="/blog" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
             <BookOpen className="w-4 h-4" />
-            <span>Docs</span>
+            <span>Blog</span>
           </a>
-          <a href="https://github.com/cylestio" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+          <a href="https://github.com/cylestio" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all" target="_blank" rel="noopener noreferrer">
             <Github className="w-4 h-4" />
             <span>GitHub</span>
           </a>
@@ -142,29 +140,18 @@ cylestio-dashboard`,
         </div>
       </header>
 
-      {/* About Section */}
-      <section className="relative container mx-auto px-6 py-48 mt-32 opacity-0 transition-all duration-1000 translate-y-10" id="about-section">
+      {/* About Section - Only apply dynamic styles after client-side mount */}
+      <section 
+        className={`relative container mx-auto px-6 py-48 mt-32 transition-all duration-1000 ${!isMounted ? 'opacity-0 translate-y-10' : ''}`}
+        id="about-section"
+      >
         <div className="max-w-5xl mx-auto">
           {/* Dot-pattern decorative background element */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-0 transition-all duration-1000 delay-500" id="dot-pattern">
-            <div className="absolute inset-0 grid grid-cols-[repeat(40,1fr)] grid-rows-[repeat(40,1fr)]">
-              {Array(1600).fill(0).map((_, i) => {
-                const animationClass = `animate-star-${Math.floor(Math.random() * 5) + 1}`;
-                const delayClass = `delay-${Math.floor(Math.random() * 10)}00`;
-                return (
-                  <div 
-                    key={i} 
-                    className={`w-[3px] h-[3px] rounded-full bg-blue-400 ${animationClass} ${delayClass}`}
-                    style={{ 
-                      opacity: Math.random() > 0.7 ? 0.5 : 0.2,
-                      transform: `scale(${Math.random() > 0.9 ? 1.2 : 1})`
-                    }}
-                  ></div>
-                );
-              })}
-            </div>
-            
-            {/* Explorer names within the dot pattern - now spread across the entire area with more random positioning */}
+          <div 
+            className={`absolute top-0 right-0 w-[600px] h-[600px] transition-all duration-1000 delay-500 ${!isMounted ? 'opacity-0' : ''}`}
+            id="dot-pattern"
+          >
+            {/* Explorer names within the dot pattern - keeping only the explorer names, removing the dot pattern */}
             <div className="absolute top-[8%] left-[15%] text-3xl font-light text-white/60 animate-explorer-1">
               Galileo
             </div>
@@ -222,17 +209,14 @@ cylestio-dashboard`,
                 Like the legendary <span className="text-blue-400">explorers</span>
               </h2>
               <p className="text-2xl text-white/80 tracking-wide max-w-3xl font-light">
-                who uncovered the secrets of the universe, we reveal what others cannot see.
+                who uncovered the secrets of the universe, Cylestio reveals what others cannot see.
               </p>
             </div>
           </div>
 
           {/* Features section with refined styling */}
           <div className="opacity-0 transition-all duration-1000 delay-700" id="about-features">
-            <h3 className="text-3xl font-semibold mb-20 flex items-center">
 
-              Cylestio reveals hidden threats and usage trends across:
-            </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               {/* Feature cards with enhanced hover effects */}
@@ -297,14 +281,14 @@ cylestio-dashboard`,
             <Shield className="w-8 h-8 text-purple-400 mb-6" />
             <h3 className="text-xl font-semibold mb-4">DevSecOps for AI Agents</h3>
             <p className="text-blue-100/70">
-              Integrate security into every stage of the AI lifecycle—from development through production.
+              Integrate security into every stage of the AI lifecycle—from development to production.
             </p>
           </div>
           <div className="cosmic-card rounded-xl p-8 hover:scale-105 transition-transform">
             <Sparkles className="w-8 h-8 text-blue-400 mb-6" />
             <h3 className="text-xl font-semibold mb-4">Open‑Source & Enterprise</h3>
             <p className="text-blue-100/70">
-              Start with open‑source for immediate value, upgrade to SaaS for advanced threat detection and analytics.
+              Start with the free and local open‑source solution for immediate value. <br></br><br></br>Upgrade for advanced threat detection and analytics across your entire fleet.
             </p>
           </div>
         </div>
