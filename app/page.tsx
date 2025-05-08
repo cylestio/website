@@ -694,7 +694,7 @@ cylestio_monitor.stop_monitoring()`,
                       </div>
                     </div>
                     <p className="text-blue-100/70 mb-8">
-                    Explore & Investigate in Cylestio’s Local UI
+                    Explore & Investigate in Cylestio's Local UI
                     </p>
                     
                     <div className="bg-[#070B14] rounded-lg p-5">
@@ -723,36 +723,6 @@ cylestio_monitor.stop_monitoring()`,
                   </div>
                 )}
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Dashboard Preview */}
-      <section className="relative container mx-auto px-6 py-32">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Dashboard Preview</h2>
-          <div className="cosmic-card rounded-xl p-4 mb-12 aspect-video flex items-center justify-center">
-            <p className="text-blue-100/60 text-xl">Dashboard Screenshot Coming Soon</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="cosmic-card rounded-xl p-6 text-center">
-              <h3 className="text-xl font-semibold mb-4">Agent Activities</h3>
-              <p className="text-blue-100/70">
-                Monitor all agent interactions and activities in real-time with detailed logs and visualizations.
-              </p>
-            </div>
-            <div className="cosmic-card rounded-xl p-6 text-center">
-              <h3 className="text-xl font-semibold mb-4">Security Alerts</h3>
-              <p className="text-blue-100/70">
-                Receive immediate notifications about potential security issues and anomalous agent behavior.
-              </p>
-            </div>
-            <div className="cosmic-card rounded-xl p-6 text-center">
-              <h3 className="text-xl font-semibold mb-4">Performance Metrics</h3>
-              <p className="text-blue-100/70">
-                Track the performance and resource usage of your AI agents to optimize and improve functionality.
-              </p>
             </div>
           </div>
         </div>
