@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Shield, Eye, Lock, Sparkles, Terminal, Github, ArrowRight, Star, Orbit, Code, Server, Users, FileText, MessageSquare, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Shield, Eye, Lock, Sparkles, Terminal, Github, ArrowRight, Star, Orbit, Code, Server, Users, FileText, MessageSquare, BookOpen, ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 
 // Use Cases Carousel Component
 function UseCasesCarousel() {
@@ -729,21 +729,113 @@ cylestio_monitor.stop_monitoring()`,
       </section>
 
       {/* Community Section */}
-      <section className="relative container mx-auto px-6 py-32">
-        <div className="cosmic-card max-w-3xl mx-auto text-center p-12 rounded-2xl">
-          <h2 className="text-4xl font-bold mb-8">Join the Cylestio Community</h2>
-          <p className="text-xl text-blue-100/80 mb-12">
-            Start protecting your AI agents with our open-source tool today, and explore our premium SaaS platform as you scale.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
-            <a href="https://github.com/orgs/cylestio/discussions" className="cosmic-glow flex items-center justify-center space-x-2 bg-blue-500 px-8 py-4 rounded-lg hover:bg-blue-600 transition-all text-lg font-medium">
-              <Github className="w-5 h-5" />
+      <section id="community" className="relative container mx-auto px-6 py-32">
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
+          {/* Section heading with refined styling */}
+          <h2 className="text-5xl md:text-6xl font-bold mb-24 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 tracking-tight">
+            Join the Cylestio Community
+          </h2>
+          
+          {/* Primary action buttons with enhanced styling - centered */}
+          <div className="flex flex-col md:flex-row justify-center gap-5 mb-32 w-full max-w-3xl mx-auto">
+            <a 
+              href="https://github.com/orgs/cylestio/discussions" 
+              className="group flex items-center justify-center space-x-3 bg-blue-600 px-8 py-4 rounded-xl text-lg font-medium transition duration-300 hover:bg-blue-700 flex-1"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-blue-400 opacity-50 blur-xl group-hover:opacity-70 transition-opacity duration-300"></div>
+                <Github className="w-6 h-6 relative z-10" />
+              </div>
               <span>GitHub Discussions</span>
             </a>
-            <a href="https://join.slack.com/share/enQtODYxMzQ1Mjg3OTQwOC01MzQxMjM2MTAxMTc0ZjgwMmNjN2E0OGU0ZTZiOTk4ODQ1Zjc0NWQwMmNkZWIwNTJjYWI4OWViMGNiMjJlZGNk" className="cosmic-glow flex items-center justify-center space-x-2 bg-purple-500 text-white px-8 py-4 rounded-lg hover:bg-purple-600 transition-all text-lg font-medium">
-              <MessageSquare className="w-5 h-5" />
+            <a 
+              href="https://join.slack.com/t/cylestio-community/shared_invite/zt-35dopqtrk-SnBn_2P0TusyA40d1T5yLg" 
+              className="group flex items-center justify-center space-x-3 bg-purple-600 px-8 py-4 rounded-xl text-lg font-medium transition duration-300 hover:bg-purple-700 flex-1"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-purple-400 opacity-50 blur-xl group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div className="w-6 h-6 relative z-10 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+                  </svg>
+                </div>
+              </div>
               <span>Slack Channel</span>
             </a>
+            <a 
+              href="https://discord.gg/xuvaeXfg" 
+              className="group flex items-center justify-center space-x-3 bg-indigo-600 px-8 py-4 rounded-xl text-lg font-medium transition duration-300 hover:bg-indigo-700 flex-1"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-indigo-400 opacity-50 blur-xl group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div className="w-6 h-6 relative z-10 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 127.14 96.36" fill="currentColor">
+                    <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+                  </svg>
+                </div>
+              </div>
+              <span>Discord Server</span>
+            </a>
+          </div>
+          
+          {/* Community highlights with refined card design - centered */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
+            <div className="bg-gradient-to-b from-blue-900/30 to-blue-900/10 border border-blue-500/20 rounded-2xl p-10 transition-all duration-300 hover:border-blue-500/40 group/card relative overflow-hidden">
+              {/* Glowing effect on hover */}
+              <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Icon with enhanced styling */}
+              <div className="flex justify-center mb-8 relative">
+                <div className="absolute inset-0 bg-blue-400/20 blur-xl opacity-0 group-hover/card:opacity-70 transition-all duration-300"></div>
+                <div className="w-16 h-16 bg-blue-900/50 rounded-2xl flex items-center justify-center relative">
+                  <Users className="w-8 h-8 text-blue-400" />
+                </div>
+              </div>
+              
+              {/* Content with improved typography */}
+              <h3 className="text-xl font-semibold mb-4 text-center text-blue-100">Join the Discussion</h3>
+              <p className="text-blue-200/70 text-center leading-relaxed">Connect with developers, report bugs and request new features</p>
+            </div>
+            
+            <div className="bg-gradient-to-b from-purple-900/30 to-purple-900/10 border border-purple-500/20 rounded-2xl p-10 transition-all duration-300 hover:border-purple-500/40 group/card relative overflow-hidden">
+              {/* Glowing effect on hover */}
+              <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Icon with enhanced styling */}
+              <div className="flex justify-center mb-8 relative">
+                <div className="absolute inset-0 bg-purple-400/20 blur-xl opacity-0 group-hover/card:opacity-70 transition-all duration-300"></div>
+                <div className="w-16 h-16 bg-purple-900/50 rounded-2xl flex items-center justify-center relative">
+                  <Code className="w-8 h-8 text-purple-400" />
+                </div>
+              </div>
+              
+              {/* Content with improved typography */}
+              <h3 className="text-xl font-semibold mb-4 text-center text-blue-100">Contribute</h3>
+              <p className="text-blue-200/70 text-center leading-relaxed">Help improve Cylestio by contributing to our open-source repositories</p>
+            </div>
+            
+            <div className="bg-gradient-to-b from-blue-900/30 to-blue-900/10 border border-blue-500/20 rounded-2xl p-10 transition-all duration-300 hover:border-blue-500/40 group/card relative overflow-hidden">
+              {/* Glowing effect on hover */}
+              <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Icon with enhanced styling */}
+              <div className="flex justify-center mb-8 relative">
+                <div className="absolute inset-0 bg-blue-400/20 blur-xl opacity-0 group-hover/card:opacity-70 transition-all duration-300"></div>
+                <div className="w-16 h-16 bg-blue-900/50 rounded-2xl flex items-center justify-center relative">
+                  <HelpCircle className="w-8 h-8 text-blue-400" />
+                </div>
+              </div>
+              
+              {/* Content with improved typography */}
+              <h3 className="text-xl font-semibold mb-4 text-center text-blue-100">Get Support</h3>
+              <p className="text-blue-200/70 text-center leading-relaxed">Find help and resources from our community and core team</p>
+            </div>
           </div>
         </div>
       </section>
@@ -759,7 +851,9 @@ cylestio_monitor.stop_monitoring()`,
             />
             <span className="font-bold">Cylestio</span>
           </div>
-          <p className="text-blue-100/60">Secure Innovation. Secure Future.</p>
+          <p className="text-blue-100/60">
+            <a href="mailto:info@cylestio.com" className="hover:text-blue-300 transition-colors">info@cylestio.com</a> © 2025 Cylestio — Secure innovation. Secure future.
+          </p>
         </div>
       </footer>
 
