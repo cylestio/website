@@ -346,22 +346,22 @@ cylestio_monitor.stop_monitoring()`,
           <span className="text-2xl font-bold">Cylestio</span>
         </div>
         <div className="flex items-center space-x-4">
-          <a href="#use-cases" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+          <a href="#use-cases" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all">
             <span>Use Cases</span>
           </a>
-          <a href="https://github.com/cylestio" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/cylestio" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all" target="_blank" rel="noopener noreferrer">
             <Github className="w-4 h-4" />
             <span>GitHub</span>
           </a>
-          <a href="#community" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+          <a href="#community" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all">
             <Users className="w-4 h-4" />
             <span>Community</span>
           </a>
-          <a href="/blog" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+          <a href="/blog" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all">
             <BookOpen className="w-4 h-4" />
             <span>Blog</span>
           </a>
-          <a href="#quick-start" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+          <a href="#quick-start" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all">
             <ArrowRight className="w-4 h-4" />
             <span>Get Started</span>
           </a>
