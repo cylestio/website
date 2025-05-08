@@ -1,7 +1,275 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Shield, Eye, Lock, Sparkles, Terminal, Github, ArrowRight, Star, Orbit, Code, Server, Users, FileText, MessageSquare, BookOpen } from 'lucide-react';
+import { Shield, Eye, Lock, Sparkles, Terminal, Github, ArrowRight, Star, Orbit, Code, Server, Users, FileText, MessageSquare, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Use Cases Carousel Component
+function UseCasesCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  
+  const useCases = [
+    {
+      id: 1,
+      image: '/images/use_cases_screenshots/observe_full_agentic_workforc.webp',
+      title: 'Observe: Full agentic observability',
+      subtitle: 'Live-monitor every agent: From high-level KPIs down to raw events for root-cause analysis.'
+    },
+    {
+      id: 2,
+      image: '/images/use_cases_screenshots/optimize_model_analytics.webp',
+      title: 'Optimize: Model analytics',
+      subtitle: 'Stay on budget with real-time token spend and cost trends. Optimize performance and analyze model latency.'
+    },
+    {
+      id: 3,
+      image: '/images/use_cases_screenshots/audit_tool_usage_analysis.webp',
+      title: 'Audit: Tool-usage analysis',
+      subtitle: 'Audit every internal & external tool call - including MCP servers: parameters, latency, and frequency.'
+    },
+    {
+      id: 4,
+      image: '/images/use_cases_screenshots/protect_security_compliance.webp',
+      title: 'Protect: Security & compliance',
+      subtitle: 'Catch PII and sensitive data leaks, prompt injections, dangerous commands and policy violations as they happen.'
+    },
+    {
+      id: 5,
+      image: '/images/use_cases_screenshots/explore_llm_explorer.webp',
+      title: 'Explore: LLM explorer',
+      subtitle: 'Drill from a full session timeline down to any single prompt & response across users, agents and models.'
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === useCases.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? useCases.length - 1 : prev - 1));
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+  
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swipe left, go to next slide
+      nextSlide();
+    }
+    
+    if (touchStart - touchEnd < -50) {
+      // Swipe right, go to previous slide
+      prevSlide();
+    }
+  };
+
+  return (
+    <div className="relative">
+      {/* Main carousel area with max-width layout */}
+      <div 
+        className="relative overflow-hidden rounded-2xl bg-muted/40"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div 
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {useCases.map((useCase) => (
+            <div key={useCase.id} className="min-w-full flex flex-col md:flex-row">
+              {/* Screenshot - increased to 70% width on md screens with better alignment */}
+              <div className="w-full md:w-[70%] relative">
+                <div className="flex items-center justify-start h-full p-0">
+                  <img 
+                    src={useCase.image} 
+                    alt={useCase.title} 
+                    className="w-full h-auto max-h-[280px] sm:max-h-[360px] md:max-h-[420px] lg:max-h-[500px] object-contain rounded-l-xl"
+                  />
+                </div>
+              </div>
+              
+              {/* Caption content - better positioned and aligned */}
+              <div className="w-full md:w-[30%] p-6 flex flex-col justify-center">
+                <div className="space-y-4">
+                  <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-white">{useCase.title}</h4>
+                  <p className="text-sm md:text-base text-blue-100/80">{useCase.subtitle}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {/* Navigation buttons - always visible */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-full p-2 transition-all duration-300 z-10"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5 text-white" />
+        </button>
+        
+        <button 
+          onClick={nextSlide}
+          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-full p-2 transition-all duration-300 z-10"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5 text-white" />
+        </button>
+      </div>
+      
+      {/* Dots navigation - now below the carousel */}
+      <div className="flex justify-center gap-2 mt-4">
+        {useCases.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+              currentSlide === index 
+                ? 'bg-blue-500 w-4 sm:w-6' 
+                : 'bg-blue-500/30 hover:bg-blue-500/50'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Use Cases Tabs Component 
+function UseCasesTabs() {
+  const [activeTab, setActiveTab] = useState('observe');
+  
+  const TabsTrigger = ({ value, icon: Icon, children }: { value: string, icon: any, children: React.ReactNode }) => {
+    return (
+      <button
+        onClick={() => setActiveTab(value)}
+        className={`px-5 py-4 flex items-center whitespace-nowrap transition-all duration-300 snap-start text-base md:text-lg ${
+          activeTab === value
+            ? 'text-blue-400 border-b-2 border-blue-400 font-medium'
+            : 'text-blue-400/70 hover:text-blue-300'
+        }`}
+        aria-controls={`tab-content-${value}`}
+      >
+        <Icon className="w-5 h-5 md:w-6 md:h-6 mr-2 text-blue-300/70" aria-hidden="true" />
+        <span>{children}</span>
+      </button>
+    );
+  };
+  
+  const TabsContent = ({ value, title, subtitle, image }: { value: string, title: string, subtitle: string, image: string }) => {
+    return (
+      <div 
+        id={`tab-content-${value}`}
+        className={`flex flex-col md:flex-row items-start ${activeTab === value ? 'animate-fade block' : 'hidden'}`}
+      >
+        <div className="w-full md:w-9/12 relative">
+          <div className="premium-screenshot">
+            <div className="floating-glow"></div>
+            <div className="screenshot-inner">
+              <img
+                src={image}
+                alt={title}
+                loading="eager"
+              />
+              <div className="shine-effect"></div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full md:w-3/12 pt-6 md:pt-0 md:pl-8">
+          <div className="border-l-2 border-blue-400 pl-6">
+            <h4 className="text-2xl md:text-3xl font-bold text-white leading-tight">{title}</h4>
+            <p className="text-base md:text-lg text-blue-100/80 mt-3 leading-relaxed">
+              {subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      {/* Tabs navigation */}
+      <div className="border-b border-blue-500/20 flex gap-4 md:gap-6 overflow-x-auto snap-x hide-scrollbar pb-1 mb-4">
+        <TabsTrigger value="observe" icon={Eye}>Observe</TabsTrigger>
+        <TabsTrigger value="optimize" icon={Star}>Optimize</TabsTrigger>
+        <TabsTrigger value="audit" icon={FileText}>Audit</TabsTrigger>
+        <TabsTrigger value="protect" icon={Shield}>Protect</TabsTrigger>
+        <TabsTrigger value="explore" icon={Orbit}>Explore</TabsTrigger>
+      </div>
+      
+      {/* Tab content */}
+      <TabsContent 
+        value="observe" 
+        title="Full agentic workforce observability"
+        subtitle="Live monitor every agent - from high-level KPIs down to raw events for root-cause analysis."
+        image="/images/use_cases_screenshots/observe_full_agentic_workforc.webp"
+      />
+      
+      <TabsContent 
+        value="optimize" 
+        title="Model analytics"
+        subtitle="Stay on budget with real-time token spend, cost trends and performance analysis."
+        image="/images/use_cases_screenshots/optimize_model_analytics.webp"
+      />
+      
+      <TabsContent 
+        value="audit" 
+        title="Tool usage analysis"
+        subtitle="Audit event internal & external tool call - including MCP servers - your agents access and invoke: parameters, latency, and frequency."
+        image="/images/use_cases_screenshots/audit_tool_usage_analysis.webp"
+      />
+      
+      <TabsContent 
+        value="protect" 
+        title="Security & compliance"
+        subtitle="Catch PII and sensitive data leaks, prompt injections, dangerous commands and policy violations as they happen."
+        image="/images/use_cases_screenshots/protect_security_compliance.webp"
+      />
+      
+      <TabsContent 
+        value="explore" 
+        title="LLM explorer"
+        subtitle="Drill from full session timeline to any single prompt & response of your users, agents and LLMs."
+        image="/images/use_cases_screenshots/explore_llm_explorer.webp"
+      />
+    </>
+  );
+}
+
+// Use Cases Section with the new tabs implementation
+function UseCasesSection() {
+  return (
+    <section id="use-cases" className="relative container mx-auto px-6 py-32">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section headline and subheadline - left aligned */}
+        <div className="space-y-4 mb-10">
+          <h2 className="text-5xl font-bold text-white">Key Workflows</h2>
+          <p className="text-xl md:text-2xl text-blue-100/80 max-w-2xl">
+          Capture • Detect • Optimize
+          </p>
+        </div>
+
+        {/* New tabs implementation */}
+        <UseCasesTabs />
+      </div>
+    </section>
+  );
+}
 
 type InstallStep = {
   title: string;
@@ -170,10 +438,10 @@ cylestio-dashboard`,
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
-                  <Eye className="w-8 h-8 text-blue-400" />
+                  <Terminal className="w-8 h-8 text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">End-to-End Monitoring</h3>
-                <p className="text-blue-100/80 leading-relaxed">
+                <p className="text-lg text-blue-100/80 leading-relaxed">
                   Track every agent: tool usage, LLM calls, data flows and user actions - in real time.
                 </p>
               </div>
@@ -184,10 +452,10 @@ cylestio-dashboard`,
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-all">
-                  <Shield className="w-8 h-8 text-purple-400" />
+                  <Lock className="w-8 h-8 text-purple-400" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-purple-200 transition-colors">DevSecOps for AI Agents</h3>
-                <p className="text-blue-100/80 leading-relaxed">
+                <p className="text-lg text-blue-100/80 leading-relaxed">
                   Security & compliance baked into every stage of your AI lifecycle - from Development to Production.
                 </p>
               </div>
@@ -198,10 +466,10 @@ cylestio-dashboard`,
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
-                  <Sparkles className="w-8 h-8 text-blue-400" />
+                  <Code className="w-8 h-8 text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">Open-Source & Enterprise</h3>
-                <p className="text-blue-100/80 leading-relaxed">
+                <p className="text-lg text-blue-100/80 leading-relaxed">
                   <span className="font-bold">Start free & local</span>. Unlock advanced threat analytics and fleet-wide insights as you scale - meeting <span className="font-bold">SOC2, GDPR, HIPAA</span> and more.
                 </p>
               </div>
@@ -209,6 +477,9 @@ cylestio-dashboard`,
           </div>
         </div>
       </section>
+
+      {/* Use Cases Section */}
+      <UseCasesSection />
 
       {/* Product Features */}
       <section className="relative container mx-auto px-6 py-32">
