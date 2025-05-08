@@ -4,10 +4,9 @@ const nextConfig = {
   images: {
     domains: ['extraordinary-daifuku-3b51b1.netlify.app'],
   },
-  // Configure experimental features for better hydration handling
+  // Updated configuration for Next.js 14+
   experimental: {
-    // Ensure proper hydration in the App Router
-    appDir: true,
+    // App Router is now the default in Next.js 14+
   },
 }
 

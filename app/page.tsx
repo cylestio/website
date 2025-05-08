@@ -38,33 +38,6 @@ export default function Home() {
         }
         container?.appendChild(star);
       }
-
-      // Intersection Observer for scroll animations
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && entry.target instanceof HTMLElement) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px'
-      });
-
-      // Observe elements
-      const elements = [
-        document.getElementById('about-section'),
-        document.getElementById('about-title'),
-        document.getElementById('about-features'),
-        document.getElementById('dot-pattern')
-      ];
-
-      elements.forEach(element => {
-        if (element) observer.observe(element);
-      });
-
-      return () => observer.disconnect();
     }
   }, [isMounted]);
 
@@ -174,156 +147,65 @@ cylestio-dashboard`,
         </div>
       </header>
 
-      {/* About Section - Only apply dynamic styles after client-side mount */}
-      <section 
-        className={`relative container mx-auto px-6 py-48 mt-32 transition-all duration-1000 ${!isMounted ? 'opacity-0 translate-y-10' : ''}`}
-        id="about-section"
-      >
-        <div className="max-w-5xl mx-auto">
-          {/* Dot-pattern decorative background element */}
-          <div 
-            className={`absolute top-0 right-0 w-[600px] h-[600px] transition-all duration-1000 delay-500 ${!isMounted ? 'opacity-0' : ''}`}
-            id="dot-pattern"
-          >
-            {/* Explorer names within the dot pattern - keeping only the explorer names, removing the dot pattern */}
-            <div className="absolute top-[8%] left-[15%] text-3xl font-light text-white/60 animate-explorer-1">
-              Galileo
-            </div>
-            <div className="absolute top-[32%] left-[40%] text-3xl font-light text-white/60 animate-explorer-2">
-              Kepler
-            </div>
-            <div className="absolute top-[65%] left-[22%] text-3xl font-light text-white/60 animate-explorer-3">
-              Copernicus
-            </div>
-            <div className="absolute top-[18%] right-[25%] text-2xl font-light text-white/50 animate-explorer-4">
-              Newton
-            </div>
-            <div className="absolute top-[48%] right-[18%] text-2xl font-light text-white/50 animate-explorer-5">
-              Hubble
-            </div>
-            <div className="absolute top-[72%] right-[32%] text-2xl font-light text-white/50 animate-explorer-6">
-              Einstein
-            </div>
-            <div className="absolute top-[22%] left-[12%] text-xl font-light text-white/50 animate-explorer-7">
-              Brahe
-            </div>
-            <div className="absolute top-[55%] left-[38%] text-xl font-light text-white/50 animate-explorer-8">
-              Hawking
-            </div>
-            <div className="absolute top-[7%] right-[22%] text-2xl font-light text-white/50 animate-explorer-9">
-              Sagan
-            </div>
-            <div className="absolute top-[35%] right-[35%] text-2xl font-light text-white/50 animate-explorer-10">
-              Herschel
-            </div>
-            <div className="absolute top-[62%] left-[45%] text-xl font-light text-white/50 animate-explorer-11">
-              Halley
-            </div>
-            <div className="absolute top-[82%] right-[28%] text-xl font-light text-white/50 animate-explorer-12">
-              Cassini
-            </div>
-            <div className="absolute top-[25%] right-[8%] text-2xl font-light text-white/50 animate-explorer-13">
-              Laplace
-            </div>
-            <div className="absolute top-[52%] left-[8%] text-xl font-light text-white/50 animate-explorer-14">
-              Lovelace
-            </div>
-            <div className="absolute top-[78%] left-[25%] text-2xl font-light text-white/50 animate-explorer-15">
-              Curie
-            </div>
-            <div className="absolute top-[42%] right-[12%] text-xl font-light text-white/50 animate-explorer-16">
-              Hypatia
-            </div>
-          </div>
-
-          {/* Main title with refined styling */}
-          <div className="mb-32 opacity-0 transition-all duration-1000 delay-300" id="about-title">
-            <div className="border-l-4 border-blue-400 pl-8 mb-8">
-              <h2 className="text-6xl font-bold mb-6 leading-tight tracking-tight bg-gradient-to-r from-white to-white/90 bg-clip-text">
-                Like the legendary <span className="text-blue-400">explorers</span>
-              </h2>
-              <p className="text-2xl text-white/80 tracking-wide max-w-3xl font-light">
-                who uncovered the secrets of the universe, Cylestio reveals what others cannot see.
-              </p>
-            </div>
-          </div>
-
-          {/* Features section with refined styling */}
-          <div className="opacity-0 transition-all duration-1000 delay-700" id="about-features">
-
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-              {/* Feature cards with enhanced hover effects */}
-              <div className="group hover:translate-y-[-5px] transition-all duration-500">
-                <div className="flex items-center mb-8">
-                  <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mr-5 group-hover:bg-blue-500/20 transition-all duration-500">
-                    <Code className="w-7 h-7 text-blue-400" />
-                  </div>
-                  <h4 className="text-2xl font-medium">
-                    Tools & Data Sources
-                  </h4>
-                </div>
-                <p className="text-lg text-white/70 border-t border-white/10 pt-6 group-hover:text-white/90 transition-all duration-500">
-                  Monitor all internal and external inputs and integrations
-                </p>
-              </div>
-              
-              <div className="group hover:translate-y-[-5px] transition-all duration-500">
-                <div className="flex items-center mb-8">
-                  <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mr-5 group-hover:bg-blue-500/20 transition-all duration-500">
-                    <MessageSquare className="w-7 h-7 text-blue-400" />
-                  </div>
-                  <h4 className="text-2xl font-medium">
-                    LLM Interactions
-                  </h4>
-                </div>
-                <p className="text-lg text-white/70 border-t border-white/10 pt-6 group-hover:text-white/90 transition-all duration-500">
-                  Track all AI queries and responses
-                </p>
-              </div>
-              
-              <div className="group hover:translate-y-[-5px] transition-all duration-500">
-                <div className="flex items-center mb-8">
-                  <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mr-5 group-hover:bg-blue-500/20 transition-all duration-500">
-                    <Users className="w-7 h-7 text-blue-400" />
-                  </div>
-                  <h4 className="text-2xl font-medium">
-                    User Activities
-                  </h4>
-                </div>
-                <p className="text-lg text-white/70 border-t border-white/10 pt-6 group-hover:text-white/90 transition-all duration-500">
-                  Identify patterns and anomalies
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Do */}
+      {/* Value Proposition Section */}
       <section className="relative container mx-auto px-6 py-32">
-        <h2 className="text-4xl font-bold text-center mb-20 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">What We Do</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="cosmic-card rounded-xl p-8 hover:scale-105 transition-transform">
-            <Eye className="w-8 h-8 text-blue-400 mb-6" />
-            <h3 className="text-xl font-semibold mb-4">End-to-End Monitoring</h3>
-            <p className="text-blue-100/70">
-              Track AI agents in real‑time, providing insights into LLM interactions, tool usage, data flows, and user activities.
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full opacity-30 w-1/2 h-1/2 mx-auto"></div>
+        
+        <div className="max-w-6xl mx-auto space-y-20 relative z-10">
+          {/* Headline and sub-line */}
+          <div className="text-center space-y-6">
+            <h2 className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Loved by builders. Empowering CISOs.
+            </h2>
+            <p className="text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+              Like the explorers who uncovered the secrets of the cosmos, Cylestio reveals the hidden secrets of AI workflows.
             </p>
           </div>
-          <div className="cosmic-card rounded-xl p-8 hover:scale-105 transition-transform">
-            <Shield className="w-8 h-8 text-purple-400 mb-6" />
-            <h3 className="text-xl font-semibold mb-4">DevSecOps for AI Agents</h3>
-            <p className="text-blue-100/70">
-              Integrate security into every stage of the AI lifecycle—from development to production.
-            </p>
-          </div>
-          <div className="cosmic-card rounded-xl p-8 hover:scale-105 transition-transform">
-            <Sparkles className="w-8 h-8 text-blue-400 mb-6" />
-            <h3 className="text-xl font-semibold mb-4">Open‑Source & Enterprise</h3>
-            <p className="text-blue-100/70">
-              Start with the free and local open‑source solution for immediate value. <br></br><br></br>Upgrade for advanced threat detection and analytics across your entire fleet.
-            </p>
+
+          {/* Cards - Improved layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {/* Card 1 */}
+            <div className="cosmic-card rounded-2xl p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
+                  <Eye className="w-8 h-8 text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">End-to-End Monitoring</h3>
+                <p className="text-blue-100/80 leading-relaxed">
+                  Track every agent: tool usage, LLM calls, data flows and user actions - in real time.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="cosmic-card rounded-2xl p-8 shadow-lg shadow-purple-500/5 hover:shadow-purple-500/20 transition-all border border-purple-500/10 hover:border-purple-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-all">
+                  <Shield className="w-8 h-8 text-purple-400" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-purple-200 transition-colors">DevSecOps for AI Agents</h3>
+                <p className="text-blue-100/80 leading-relaxed">
+                  Security & compliance baked into every stage of your AI lifecycle - from Development to Production.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="cosmic-card rounded-2xl p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
+                  <Sparkles className="w-8 h-8 text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">Open-Source & Enterprise</h3>
+                <p className="text-blue-100/80 leading-relaxed">
+                  <span className="font-bold">Start free & local</span>. Unlock advanced threat analytics and fleet-wide insights as you scale - meeting <span className="font-bold">SOC2, GDPR, HIPAA</span> and more.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -692,92 +574,6 @@ cylestio-dashboard`,
 
         .animate-pulse-delayed {
           animation: pulse-slow 6s ease-in-out 3s infinite;
-        }
-
-        /* Explorer name animations with more randomized timing */
-        @keyframes explorer-fade {
-          0%, 100% { opacity: 0; transform: translateY(10px); }
-          25%, 75% { opacity: 0.6; transform: translateY(0); }
-        }
-        
-        .animate-explorer-1 {
-          animation: explorer-fade 20s ease-in-out infinite;
-          animation-delay: 0s;
-        }
-        
-        .animate-explorer-2 {
-          animation: explorer-fade 18s ease-in-out infinite;
-          animation-delay: 7s;
-        }
-        
-        .animate-explorer-3 {
-          animation: explorer-fade 22s ease-in-out infinite;
-          animation-delay: 13s;
-        }
-        
-        .animate-explorer-4 {
-          animation: explorer-fade 19s ease-in-out infinite;
-          animation-delay: 3s;
-        }
-        
-        .animate-explorer-5 {
-          animation: explorer-fade 21s ease-in-out infinite;
-          animation-delay: 9s;
-        }
-        
-        .animate-explorer-6 {
-          animation: explorer-fade 23s ease-in-out infinite;
-          animation-delay: 16s;
-        }
-        
-        .animate-explorer-7 {
-          animation: explorer-fade 17s ease-in-out infinite;
-          animation-delay: 5s;
-        }
-        
-        .animate-explorer-8 {
-          animation: explorer-fade 24s ease-in-out infinite;
-          animation-delay: 11s;
-        }
-        
-        .animate-explorer-9 {
-          animation: explorer-fade 20s ease-in-out infinite;
-          animation-delay: 2s;
-        }
-        
-        .animate-explorer-10 {
-          animation: explorer-fade 19s ease-in-out infinite;
-          animation-delay: 14s;
-        }
-        
-        .animate-explorer-11 {
-          animation: explorer-fade 22s ease-in-out infinite;
-          animation-delay: 8s;
-        }
-        
-        .animate-explorer-12 {
-          animation: explorer-fade 18s ease-in-out infinite;
-          animation-delay: 17s;
-        }
-        
-        .animate-explorer-13 {
-          animation: explorer-fade 21s ease-in-out infinite;
-          animation-delay: 4s;
-        }
-        
-        .animate-explorer-14 {
-          animation: explorer-fade 23s ease-in-out infinite;
-          animation-delay: 10s;
-        }
-        
-        .animate-explorer-15 {
-          animation: explorer-fade 19s ease-in-out infinite;
-          animation-delay: 15s;
-        }
-        
-        .animate-explorer-16 {
-          animation: explorer-fade 20s ease-in-out infinite;
-          animation-delay: 6s;
         }
 
         /* Brush underline effect for "open-source" text - reduced opacity to 60% */
