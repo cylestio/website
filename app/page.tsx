@@ -24,15 +24,17 @@ export default function Home() {
     
     // Only run DOM manipulation code after component is mounted on the client
     if (typeof window !== 'undefined') {
-      // Create twinkling stars effect
+      // Create twinkling stars effect - reduced count by 70%
       const container = document.querySelector('.stars-container');
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 30; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         if (star instanceof HTMLElement) {
           star.style.left = `${Math.random() * 100}%`;
           star.style.top = `${Math.random() * 100}%`;
           star.style.animationDelay = `${Math.random() * 1}s`;
+          // Limit star opacity to max 20%
+          star.style.opacity = `${Math.random() * 0.2}`;
         }
         container?.appendChild(star);
       }
@@ -97,8 +99,8 @@ cylestio-dashboard`,
       
       {/* Navigation */}
       <nav className="relative container mx-auto px-6 py-6 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
-          <div className="relative w-10 h-10">
+        <div className="flex items-center space-x-3">
+          <div className="relative w-14 h-14">
             <img 
               src="/images/cylestio_logo.png" 
               alt="Cylestio Logo" 
@@ -106,37 +108,69 @@ cylestio-dashboard`,
             />
             <div className="absolute inset-0 bg-blue-400 blur-xl opacity-20" />
           </div>
-          <span className="text-xl font-bold">Cylestio</span>
+          <span className="text-2xl font-bold">Cylestio</span>
         </div>
         <div className="flex items-center space-x-4">
-          <a href="/blog" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
-            <BookOpen className="w-4 h-4" />
-            <span>Blog</span>
+          <a href="#use-cases" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+            <span>Use Cases</span>
           </a>
           <a href="https://github.com/cylestio" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all" target="_blank" rel="noopener noreferrer">
             <Github className="w-4 h-4" />
             <span>GitHub</span>
+          </a>
+          <a href="#community" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+            <Users className="w-4 h-4" />
+            <span>Community</span>
+          </a>
+          <a href="/blog" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+            <BookOpen className="w-4 h-4" />
+            <span>Blog</span>
+          </a>
+          <a href="#quick-start" className="cosmic-glow flex items-center space-x-2 bg-white/5 text-blue-400 px-4 py-2 rounded-lg hover:bg-white/10 transition-all">
+            <ArrowRight className="w-4 h-4" />
+            <span>Get Started</span>
           </a>
         </div>
       </nav>
 
       {/* Hero Section */}
       <header className="relative container mx-auto px-6 pt-32 pb-40">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
+        {/* Subtle radial gradient behind 3D conveyor */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0B1633]/65 rounded-full blur-[120px] opacity-65 pointer-events-none" />
         
-        <div className="max-w-4xl">
-          {/* Main heading */}
-          <h1 className="relative text-5xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-            Secure Your Organization's AI Workforce from Development to Production, Seamlessly
-          </h1>
-          
-          {/* Subtitle - elegant and prominent */}
-          <div className="mb-16">
-            <p className="text-2xl text-blue-100/90 font-light leading-relaxed">
-              Empower your teams with observability and robust security across all agentic workflows with Cylestio's <span className="open-source-text relative">OPEN SOURCE</span> DevSecAgentOps.
-            </p>
+        <div className="flex flex-col md:flex-row items-center gap-8 space-y-6 md:space-y-0">
+          <div className="max-w-4xl md:w-1/2 space-y-6 md:space-y-8">
+            {/* Main heading - changed to slate-100 from gradient */}
+            <h1 className="relative text-5xl font-bold text-slate-100">
+              Monitor Your Agentic Workforce From Dev to Prod, Seamlessly.
+            </h1>
+            
+            {/* Body text */}
+            <div style={{ marginBottom: '3.5rem' }}>
+              <p className="text-2xl text-blue-100/90 font-light leading-relaxed">
+                <b>Capture</b> every prompt, MCP call, tool execution, user interaction and data flow. <b>Detect</b> security risks, policy breaches, and cost spikes with Cylestio's <span className="open-source-text relative">open-source</span> <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent font-medium">DevSecAgentOps</span>.
+              </p>
+            </div>
+            
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a href="#quick-start" className="btn btn-primary cosmic-glow">
+                Get Started
+              </a>
+              <a href="#community" className="btn btn-secondary">
+                Join Community
+              </a>
+            </div>
           </div>
           
+          {/* Header Diagram */}
+          <div className="md:w-1/2 flex justify-center items-center">
+            <img 
+              src="/images/header_diagram_opt.webp" 
+              alt="Agent monitoring workflow from dev to prod" 
+              className="max-w-full h-auto object-contain"
+            />
+          </div>
         </div>
       </header>
 
@@ -746,12 +780,12 @@ cylestio-dashboard`,
           animation-delay: 6s;
         }
 
-        /* Brush underline effect for "OPEN SOURCE" text */
+        /* Brush underline effect for "open-source" text - reduced opacity to 60% */
         .open-source-text {
           font-weight: bold;
           position: relative;
           display: inline-block;
-          color: #60a5fa;
+          color: inherit; /* Use inherited color instead of blue */
           z-index: 1;
         }
         
@@ -765,22 +799,22 @@ cylestio-dashboard`,
           background-color: #8b5cf6;
           border-radius: 12px;
           z-index: -1;
-          opacity: 0.7;
+          opacity: 0.6;
           transform: rotate(-1deg);
           filter: blur(1px);
           background-image: linear-gradient(90deg, 
-            rgba(139, 92, 246, 0.3) 0%, 
-            rgba(139, 92, 246, 0.8) 30%, 
-            rgba(139, 92, 246, 0.9) 50%, 
-            rgba(139, 92, 246, 0.8) 70%, 
-            rgba(139, 92, 246, 0.3) 100%
+            rgba(139, 92, 246, 0.2) 0%, 
+            rgba(139, 92, 246, 0.6) 30%, 
+            rgba(139, 92, 246, 0.6) 50%, 
+            rgba(139, 92, 246, 0.6) 70%, 
+            rgba(139, 92, 246, 0.2) 100%
           );
           transition: all 0.3s ease;
         }
         
         .open-source-text:hover::after {
           height: 8px;
-          opacity: 0.9;
+          opacity: 0.6;
           filter: blur(1.5px);
           transform: rotate(-0.5deg);
         }
