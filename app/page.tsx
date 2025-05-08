@@ -150,15 +150,16 @@ function UseCasesCarousel() {
 }
 
 // Use Cases Tabs Component 
-function UseCasesTabs() {
-  const [activeTab, setActiveTab] = useState('observe');
+const UseCasesTabs = React.memo(function UseCasesTabs() {
+  // Use a React.useState instead of the imported useState to emphasize encapsulation
+  const [useCasesActiveTab, setUseCasesActiveTab] = React.useState('observe');
   
   const TabsTrigger = ({ value, icon: Icon, children }: { value: string, icon: any, children: React.ReactNode }) => {
     return (
       <button
-        onClick={() => setActiveTab(value)}
+        onClick={() => setUseCasesActiveTab(value)}
         className={`px-5 py-4 flex items-center whitespace-nowrap transition-all duration-300 snap-start text-base md:text-lg ${
-          activeTab === value
+          useCasesActiveTab === value
             ? 'text-blue-400 border-b-2 border-blue-400 font-medium'
             : 'text-blue-400/70 hover:text-blue-300'
         }`}
@@ -174,7 +175,7 @@ function UseCasesTabs() {
     return (
       <div 
         id={`tab-content-${value}`}
-        className={`flex flex-col md:flex-row items-start ${activeTab === value ? 'animate-fade block' : 'hidden'}`}
+        className={`flex flex-col md:flex-row items-start ${useCasesActiveTab === value ? 'animate-fade block' : 'hidden'}`}
       >
         <div className="w-full md:w-9/12 relative">
           <div className="premium-screenshot">
@@ -249,7 +250,7 @@ function UseCasesTabs() {
       />
     </>
   );
-}
+});
 
 // Use Cases Section with the new tabs implementation
 function UseCasesSection() {
@@ -283,8 +284,8 @@ type InstallSteps = {
 };
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<'install' | 'monitor' | 'observe'>('install');
-  const [activeFeature, setActiveFeature] = useState<'installation' | 'security' | 'insights' | 'developers'>('installation');
+  const [quickStartActiveTab, setQuickStartActiveTab] = useState<'install' | 'import'>('install');
+  const [activeFeature, setActiveFeature] = useState<'instrument' | 'digest' | 'visualize'>('instrument');
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -316,21 +317,14 @@ export default function Home() {
       command: "pip install cylestio-monitor",
       icon: "›_"
     },
-    monitor: {
-      title: "Start Monitoring",
-      description: "Enable monitoring seamlessly",
-      command: `from cylestio_monitor import enable_monitoring
-
-enable_monitoring(agent_id="your-agent-id")`,
-      icon: "›_"
-    },
-    observe: {
-      title: "Observe Live",
-      description: "Launch the dashboard to see your agent in action",
-      command: `npm install -g cylestio-dashboard
-
-cylestio-dashboard`,
-      icon: "›_"
+    import: {
+      title: "Import & Run",
+      description: "Import and initialize monitoring in your code",
+      command: `import cylestio_monitor
+cylestio_monitor.start_monitoring(agent_id="my-agent")
+# ... your agent code ...
+cylestio_monitor.stop_monitoring()`,
+      icon: ""
     }
   };
 
@@ -436,12 +430,12 @@ cylestio-dashboard`,
             {/* Card 1 */}
             <div className="cosmic-card rounded-2xl p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
-                  <Terminal className="w-8 h-8 text-blue-400" />
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="flex justify-center mb-6">
+                  <img src="/images/cards_icons/card_icon_1_opt.png" alt="Monitoring Icon" className="w-24 h-24 object-contain" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">End-to-End Monitoring</h3>
-                <p className="text-lg text-blue-100/80 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">End-to-End Monitoring</h3>
+                <p className="text-base text-blue-100/80 leading-relaxed">
                   Track every agent: tool usage, LLM calls, data flows and user actions - in real time.
                 </p>
               </div>
@@ -450,12 +444,12 @@ cylestio-dashboard`,
             {/* Card 2 */}
             <div className="cosmic-card rounded-2xl p-8 shadow-lg shadow-purple-500/5 hover:shadow-purple-500/20 transition-all border border-purple-500/10 hover:border-purple-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-all">
-                  <Lock className="w-8 h-8 text-purple-400" />
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="flex justify-center mb-6">
+                  <img src="/images/cards_icons/card_icon_2_opt.png" alt="DevSecOps Icon" className="w-24 h-24 object-contain" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-purple-200 transition-colors">DevSecOps for AI Agents</h3>
-                <p className="text-lg text-blue-100/80 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-purple-200 transition-colors">DevSecOps for AI Agents</h3>
+                <p className="text-base text-blue-100/80 leading-relaxed">
                   Security & compliance baked into every stage of your AI lifecycle - from Development to Production.
                 </p>
               </div>
@@ -464,12 +458,12 @@ cylestio-dashboard`,
             {/* Card 3 */}
             <div className="cosmic-card rounded-2xl p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
-                  <Code className="w-8 h-8 text-blue-400" />
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="flex justify-center mb-6">
+                  <img src="/images/cards_icons/card_icon_3_opt.png" alt="Open-Source Icon" className="w-24 h-24 object-contain" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors">Open-Source & Enterprise</h3>
-                <p className="text-lg text-blue-100/80 leading-relaxed">
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-blue-200 transition-colors whitespace-nowrap">Open-Source & Enterprise</h3>
+                <p className="text-base text-blue-100/80 leading-relaxed">
                   <span className="font-bold">Start free & local</span>. Unlock advanced threat analytics and fleet-wide insights as you scale - meeting <span className="font-bold">SOC2, GDPR, HIPAA</span> and more.
                 </p>
               </div>
@@ -482,58 +476,72 @@ cylestio-dashboard`,
       <UseCasesSection />
 
       {/* Product Features */}
-      <section className="relative container mx-auto px-6 py-32">
+      <section id="quick-start" className="relative container mx-auto px-6 py-32">
         <div className="max-w-5xl mx-auto">
+          
+          <div className="space-y-4 mb-10 text-center">
+            <h2 className="text-5xl font-bold text-white">Quick Start</h2>
+            <p className="text-xl md:text-2xl text-blue-100/80 mx-auto">
+              Up and running in minutes - no signup, no config.
+            </p>
+          </div>
           
           <div className="flex space-x-8">
             {/* Vertical Feature Tabs */}
             <div className="flex flex-col space-y-3 min-w-[240px]">
               <button
-                onClick={() => setActiveFeature('installation')}
-                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center space-x-3 ${
-                  activeFeature === 'installation'
+                onClick={() => setActiveFeature('instrument')}
+                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center ${
+                  activeFeature === 'instrument'
                     ? 'bg-blue-500/20 text-blue-300 shadow-lg shadow-blue-500/10'
                     : 'bg-blue-500/5 text-blue-400/70 hover:bg-blue-500/10'
                 }`}
               >
-                <Server className={`w-5 h-5 ${activeFeature === 'installation' ? 'text-blue-400' : 'text-blue-400/70'}`} />
-                <span>Simple Installation</span>
+                <div className="w-6 flex items-center justify-center">
+                  <img 
+                    src="/images/pypi-logo.png" 
+                    alt="PyPI" 
+                    className={`w-5 h-5 ${activeFeature === 'instrument' ? '' : 'opacity-70'}`}
+                  />
+                </div>
+                <span className="ml-3">Instrument</span>
               </button>
               
               <button
-                onClick={() => setActiveFeature('security')}
-                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center space-x-3 ${
-                  activeFeature === 'security'
+                onClick={() => setActiveFeature('digest')}
+                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center ${
+                  activeFeature === 'digest'
                     ? 'bg-blue-500/20 text-blue-300 shadow-lg shadow-blue-500/10'
                     : 'bg-blue-500/5 text-blue-400/70 hover:bg-blue-500/10'
                 }`}
               >
-                <Shield className={`w-5 h-5 ${activeFeature === 'security' ? 'text-purple-400' : 'text-purple-400/70'}`} />
-                <span>Secure & Compliant</span>
+                <div className="w-6 flex items-center justify-center">
+                  <img 
+                    src="/images/pypi-logo.png" 
+                    alt="PyPI" 
+                    className={`w-5 h-5 ${activeFeature === 'digest' ? '' : 'opacity-70'}`}
+                  />
+                </div>
+                <span className="ml-3">Ingest</span>
               </button>
               
               <button
-                onClick={() => setActiveFeature('insights')}
-                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center space-x-3 ${
-                  activeFeature === 'insights'
+                onClick={() => setActiveFeature('visualize')}
+                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center ${
+                  activeFeature === 'visualize'
                     ? 'bg-blue-500/20 text-blue-300 shadow-lg shadow-blue-500/10'
                     : 'bg-blue-500/5 text-blue-400/70 hover:bg-blue-500/10'
                 }`}
               >
-                <Eye className={`w-5 h-5 ${activeFeature === 'insights' ? 'text-blue-400' : 'text-blue-400/70'}`} />
-                <span>Unified Insights</span>
-              </button>
-              
-              <button
-                onClick={() => setActiveFeature('developers')}
-                className={`px-6 py-4 rounded-lg text-left transition-all duration-300 flex items-center space-x-3 ${
-                  activeFeature === 'developers'
-                    ? 'bg-blue-500/20 text-blue-300 shadow-lg shadow-blue-500/10'
-                    : 'bg-blue-500/5 text-blue-400/70 hover:bg-blue-500/10'
-                }`}
-              >
-                <Users className={`w-5 h-5 ${activeFeature === 'developers' ? 'text-purple-400' : 'text-purple-400/70'}`} />
-                <span>For Developers & Security Teams</span>
+                <div className="w-6 flex items-center justify-center">
+                  <img 
+                    src="/images/npm.png" 
+                    alt="npm" 
+                    className={`w-auto h-2.5 ${activeFeature === 'visualize' ? '' : 'opacity-70'}`}
+                    style={{ objectFit: 'contain', display: 'block' }}
+                  />
+                </div>
+                <span className="ml-3">Visualize</span>
               </button>
             </div>
 
@@ -542,25 +550,32 @@ cylestio-dashboard`,
               <div className="cosmic-card rounded-xl p-8 relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                {activeFeature === 'installation' && (
+                {activeFeature === 'instrument' && (
                   <div className="relative">
                     <div className="flex items-center space-x-3 mb-6">
-                      <Server className="w-8 h-8 text-blue-400" />
-                      <h3 className="text-xl font-semibold">Simple Installation</h3>
+                      <h3 className="text-xl font-semibold">Instrument</h3>
+                      <div className="bg-blue-500/20 text-xs font-medium text-blue-300 py-1 px-2 rounded flex items-center">
+                        <span className="mr-1">PyPI</span>
+                        <img 
+                          src="/images/pypi-logo.png" 
+                          alt="PyPI" 
+                          className="w-3 h-3"
+                        />
+                      </div>
                     </div>
                     
                     <p className="text-blue-100/70 mb-8">
-                      Get up and running in minutes with our easy-to-install SDK and dashboard. No complex configuration required.
+                      Deploy Cylestio's OpenTelemetry-compliant Python SDK
                     </p>
                     
                     {/* Installation Steps */}
-                    <div className="flex space-x-2 mb-8">
+                    <div className="flex space-x-2 mb-6">
                       {Object.entries(installationSteps).map(([key, { title }]) => (
                         <button
                           key={key}
-                          onClick={() => setActiveTab(key as 'install' | 'monitor' | 'observe')}
+                          onClick={() => setQuickStartActiveTab(key as 'install' | 'import')}
                           className={`px-4 py-2 rounded-lg transition-all duration-300 ${
-                            activeTab === key
+                            quickStartActiveTab === key
                               ? 'bg-blue-500/20 text-blue-300 shadow-lg shadow-blue-500/10'
                               : 'bg-blue-500/5 text-blue-400/70 hover:bg-blue-500/10'
                           }`}
@@ -570,71 +585,141 @@ cylestio-dashboard`,
                       ))}
                     </div>
                     
-                    <div className="cosmic-card bg-[#0A0F1C] p-6 rounded-lg relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
-                      <div className="relative">
-                        <p className="text-blue-100/70 mb-4">
-                          {installationSteps[activeTab].description}
-                        </p>
-                        
-                        <div className="bg-[#070B14] rounded-lg p-4">
-                          <code className="text-blue-300 block text-sm">
-                            {installationSteps[activeTab].command.split('\n').map((line, i) => (
-                              <div key={i} className="flex items-start">
-                                {line.trim() && (
-                                  <>
-                                    <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">
-                                      {installationSteps[activeTab].icon}
-                                    </span>
-                                    <span>
-                                      {line.trim()}
-                                    </span>
-                                  </>
+                    <div className="bg-[#070B14] rounded-lg p-5">
+                      <code className="text-blue-300 block text-sm">
+                        {installationSteps[quickStartActiveTab].command.split('\n').map((line, i) => (
+                          <div key={i} className="flex items-start">
+                            {line.trim() && (
+                              <>
+                                {quickStartActiveTab === 'install' ? (
+                                  <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">
+                                    {installationSteps[quickStartActiveTab].icon}
+                                  </span>
+                                ) : (
+                                  <span className="text-blue-500/40 mr-2 mt-[2px] w-[20px] text-right">
+                                    {i + 1}
+                                  </span>
                                 )}
-                                {!line.trim() && <div className="h-2" />}
-                              </div>
-                            ))}
-                          </code>
+                                {quickStartActiveTab === 'import' ? (
+                                  <span>
+                                    {line.startsWith('#') ? (
+                                      <span className="text-blue-400/60">{line.trim()}</span>
+                                    ) : line.includes('import') ? (
+                                      <span>
+                                        <span className="text-purple-400">import</span>
+                                        <span> cylestio_monitor</span>
+                                      </span>
+                                    ) : line.includes('start_monitoring') ? (
+                                      <span>
+                                        <span className="text-blue-300">cylestio_monitor</span>
+                                        <span className="text-blue-400">.</span>
+                                        <span className="text-green-400">start_monitoring</span>
+                                        <span className="text-blue-400">(</span>
+                                        <span className="text-yellow-400">agent_id</span>
+                                        <span className="text-blue-400">=</span>
+                                        <span className="text-green-300">"my-agent"</span>
+                                        <span className="text-blue-400">)</span>
+                                      </span>
+                                    ) : line.includes('stop_monitoring') ? (
+                                      <span>
+                                        <span className="text-blue-300">cylestio_monitor</span>
+                                        <span className="text-blue-400">.</span>
+                                        <span className="text-green-400">stop_monitoring</span>
+                                        <span className="text-blue-400">()</span>
+                                      </span>
+                                    ) : (
+                                      <span>{line.trim()}</span>
+                                    )}
+                                  </span>
+                                ) : (
+                                  <span>{line.trim()}</span>
+                                )}
+                              </>
+                            )}
+                            {!line.trim() && <div className="h-2" />}
+                          </div>
+                        ))}
+                      </code>
+                    </div>
+                  </div>
+                )}
+
+                {activeFeature === 'digest' && (
+                  <div className="relative">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <h3 className="text-xl font-semibold">Ingest</h3>
+                      <div className="bg-blue-500/20 text-xs font-medium text-blue-300 py-1 px-2 rounded flex items-center">
+                        <span className="mr-1">PyPI</span>
+                        <img 
+                          src="/images/pypi-logo.png" 
+                          alt="PyPI" 
+                          className="w-3 h-3"
+                        />
+                      </div>
+                    </div>
+                    <p className="text-blue-100/70 mb-8">
+                      Spin up the local event-store & API
+                    </p>
+                    
+                    <div className="bg-[#070B14] rounded-lg p-5">
+                      <code className="text-blue-300 block text-sm">
+                        <div className="flex items-start">
+                          <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">›_</span>
+                          <span>pip install cylestio-local-server</span>
                         </div>
+                        <div className="flex items-start mt-2">
+                          <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">›_</span>
+                          <span>cylestio-server</span>
+                        </div>
+                      </code>
+                      <div className="mt-4 text-blue-400/60 text-sm">
+                        API server + Swagger UI at http://localhost:8000/docs
                       </div>
                     </div>
                   </div>
                 )}
 
-                {activeFeature === 'security' && (
+                {activeFeature === 'visualize' && (
                   <div className="relative">
                     <div className="flex items-center space-x-3 mb-6">
-                      <Shield className="w-8 h-8 text-purple-400" />
-                      <h3 className="text-xl font-semibold">Secure & Compliant</h3>
+                      <h3 className="text-xl font-semibold">Visualize</h3>
+                      <div className="bg-blue-500/20 text-xs font-medium text-blue-300 py-1 px-2 rounded flex items-center">
+                        <span className="mr-1">npm</span>
+                        <img 
+                          src="/images/npm.png" 
+                          alt="npm" 
+                          className={`w-auto h-2.5 ${activeFeature === 'visualize' ? '' : 'opacity-70'}`}
+                          style={{ objectFit: 'contain', display: 'block' }}
+                        />
+                      </div>
                     </div>
-                    <p className="text-blue-100/70">
-                      Built with security in mind, our tools provide compliance-ready monitoring and threat detection for AI systems.
+                    <p className="text-blue-100/70 mb-8">
+                    Explore & Investigate in Cylestio’s Local UI
                     </p>
-                  </div>
-                )}
-
-                {activeFeature === 'insights' && (
-                  <div className="relative">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <Eye className="w-8 h-8 text-blue-400" />
-                      <h3 className="text-xl font-semibold">Unified Insights</h3>
+                    
+                    <div className="bg-[#070B14] rounded-lg p-5">
+                      <code className="text-blue-300 block text-sm">
+                        <div className="flex items-start">
+                          <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">›_</span>
+                          <span>git clone https://github.com/cylestio/cylestio-ui.git</span>
+                        </div>
+                        <div className="flex items-start mt-2">
+                          <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">›_</span>
+                          <span>cd cylestio-ui</span>
+                        </div>
+                        <div className="flex items-start mt-2">
+                          <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">›_</span>
+                          <span>npm install</span>
+                        </div>
+                        <div className="flex items-start mt-2">
+                          <span className="text-blue-400 opacity-70 mr-2 mt-[2px] w-[20px]">›_</span>
+                          <span>npm run dev</span>
+                        </div>
+                      </code>
+                      <div className="mt-4 text-blue-400/60 text-sm">
+                        Next.js dev server on http://localhost:3000
+                      </div>
                     </div>
-                    <p className="text-blue-100/70">
-                      Gain comprehensive visibility into AI agent behavior, data flows, and potential security risks in one dashboard.
-                    </p>
-                  </div>
-                )}
-
-                {activeFeature === 'developers' && (
-                  <div className="relative">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <Users className="w-8 h-8 text-purple-400" />
-                      <h3 className="text-xl font-semibold">For Developers & Security Teams</h3>
-                    </div>
-                    <p className="text-blue-100/70">
-                      Designed for DevSecOps in the AI era, providing tools for both developers building agents and security teams protecting them.
-                    </p>
                   </div>
                 )}
               </div>
