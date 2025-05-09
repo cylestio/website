@@ -8,9 +8,9 @@ export default function BlogPost() {
   return (
     <div className="relative min-h-screen cosmic-bg text-white overflow-hidden">
       {/* Navigation */}
-      <nav className="relative container mx-auto px-6 py-6 flex justify-between items-center">
+      <nav className="relative container mx-auto px-4 sm:px-6 py-4 md:py-6 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="relative w-10 h-10">
+          <div className="relative w-8 h-8 sm:w-10 sm:h-10">
             <img 
               src="/images/cylestio_logo.png" 
               alt="Cylestio Logo" 
@@ -18,36 +18,36 @@ export default function BlogPost() {
             />
             <div className="absolute inset-0 bg-blue-400 blur-xl opacity-20" />
           </div>
-          <Link href="/" className="text-xl font-bold">Cylestio</Link>
+          <Link href="/" className="text-lg sm:text-xl font-bold">Cylestio</Link>
         </div>
       </nav>
 
-      <div className="max-w-4xl mx-auto my-8 p-8 rounded-lg bg-[rgba(2,8,23,0.85)] shadow-[0_0_40px_rgba(59,130,246,0.15)]">
-        <header className="mb-12">
+      <div className="max-w-4xl mx-auto my-4 sm:my-8 p-4 sm:p-8 rounded-lg bg-[rgba(2,8,23,0.85)] shadow-[0_0_40px_rgba(59,130,246,0.15)]">
+        <header className="mb-8 sm:mb-12">
           <p className="mb-4">
             <Link href="/blog" className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1">
               <ArrowLeft className="w-4 h-4" /> Back to Blog
             </Link>
           </p>
           
-          <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <img 
               src="/blog/images/multi_agent.png" 
               alt="MCP Registry Interface" 
               className="w-full md:w-64 h-auto object-contain rounded-lg flex-shrink-0"
             />
             <div>
-              <h1 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent leading-tight">
                 How I used a team of 15 agents with 4 prompts
               </h1>
-              <p className="text-blue-100/60 text-sm">April 17, 2025</p>
+              <p className="text-blue-100/60 text-xs sm:text-sm">April 17, 2025</p>
             </div>
           </div>
           
-          <div className="border-t border-blue-500/20 mt-8 pt-8"></div>
+          <div className="border-t border-blue-500/20 mt-6 sm:mt-8 pt-6 sm:pt-8"></div>
         </header>
 
-        <main className="prose prose-invert max-w-none">
+        <main className="prose prose-invert max-w-none prose-p:text-base sm:prose-p:text-lg prose-p:leading-relaxed prose-headings:text-blue-300">
           <p className="text-white/90 text-lg leading-relaxed">I keep seeing people ask about how to use coding agents for more complex products that involve:</p>
           <ul className="space-y-2 mb-6">
             <li className="text-white/90 text-lg">Algorithms (ML, scoring, reputation, graphs...)</li>

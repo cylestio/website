@@ -25,8 +25,95 @@
   to { opacity: 1; }
 }
 
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .animate-fade {
   animation: fade 0.35s ease;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.35s ease;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 640px) {
+  .premium-screenshot {
+    margin: 0 !important;
+  }
+  
+  .screenshot-inner img {
+    max-height: 60vh !important;
+  }
+  
+  .mobile-menu {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .mobile-menu-item {
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-menu-item:active {
+    background-color: rgba(59, 130, 246, 0.2);
+    transform: scale(0.98);
+  }
+  
+  /* Improve spacing for mobile */
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+  
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .btn {
+    @apply py-2.5 px-5 text-sm;
+  }
+}
+
+/* Mobile menu backdrop */
+.mobile-menu-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+/* Mobile navigation menu styles */
+.mobile-nav-menu {
+  background: linear-gradient(to bottom, rgba(13, 22, 47, 0.95), rgba(8, 14, 32, 0.97));
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.3), transparent);
+  opacity: 0.5;
+}
+
+.mobile-nav-link.active {
+  background-color: rgba(59, 130, 246, 0.2);
+  border-left: 3px solid rgba(59, 130, 246, 0.8);
 }
 
 /* Premium screenshot display styling */
@@ -191,7 +278,7 @@
 
 @layer components {
   .btn {
-    @apply px-6 py-3 rounded-lg font-semibold transition-colors duration-200;
+    @apply px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg font-semibold transition-colors duration-200;
   }
   
   .btn-primary {
