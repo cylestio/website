@@ -497,9 +497,11 @@ cylestio_monitor.stop_monitoring()`,
             <Github className="w-4 h-4" />
             <span>GitHub</span>
           </a>
-          <a href="#community" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all">
-            <Users className="w-4 h-4" />
-            <span>Community</span>
+          <a href="https://discord.gg/xuvaeXfg" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 127.14 96.36" fill="currentColor">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+            </svg>
+            <span>Discord</span>
           </a>
           <a href="/blog" className="cosmic-glow flex items-center space-x-2 bg-blue-950/40 text-blue-200 px-4 py-2 rounded-lg hover:bg-blue-900/50 transition-all">
             <BookOpen className="w-4 h-4" />
@@ -564,12 +566,16 @@ cylestio_monitor.stop_monitoring()`,
             <span className="font-medium">GitHub</span>
           </a>
           <a 
-            href="#community" 
+            href="https://discord.gg/xuvaeXfg" 
             className={`mobile-nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-blue-200 hover:bg-blue-900/30 transition-all mobile-menu-item ${activeSection === 'community' ? 'active' : ''}`}
             onClick={toggleMobileMenu}
+            target="_blank" 
+            rel="noopener noreferrer"
           >
-            <Users className={`w-5 h-5 ${activeSection === 'community' ? 'text-blue-300' : 'text-blue-400'}`} />
-            <span className="font-medium">Community</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-400" viewBox="0 0 127.14 96.36" fill="currentColor">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+            </svg>
+            <span className="font-medium">Discord</span>
           </a>
           <a 
             href="/blog" 
@@ -605,7 +611,7 @@ cylestio_monitor.stop_monitoring()`,
             {/* Body text */}
             <div className="mb-6 md:mb-14">
               <p className="text-lg sm:text-xl md:text-2xl text-blue-100/90 font-light leading-relaxed">
-                <b>Capture</b> every prompt, MCP call, tool execution, user interaction and data flow. <b>Detect</b> security risks, policy breaches, and cost spikes with Cylestio's <span className="open-source-text relative">open-source</span> <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent font-medium">DevSecAgentOps</span>.
+                <b>Detect</b> security risks, policy breaches, and cost spikes with Cylestio's <a href="#quick-start" className="open-source-text relative">open-source</a> <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent font-medium">DevSecAgentOps</span>.
               </p>
             </div>
             
@@ -614,8 +620,8 @@ cylestio_monitor.stop_monitoring()`,
               <a href="#quick-start" className="btn btn-primary cosmic-glow text-sm sm:text-base">
                 Get Started
               </a>
-              <a href="#community" className="btn btn-secondary text-sm sm:text-base">
-                Join Community
+              <a href="https://discord.gg/xuvaeXfg" className="btn btn-secondary text-sm sm:text-base" target="_blank" rel="noopener noreferrer">
+                Join Discord
               </a>
             </div>
           </div>
@@ -631,74 +637,8 @@ cylestio_monitor.stop_monitoring()`,
         </div>
       </header>
 
-      {/* Value Proposition Section */}
-      <section className="relative container mx-auto px-4 sm:px-6 py-16 md:py-32">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full opacity-30 w-1/2 h-1/2 mx-auto"></div>
-        
-        <div className="max-w-6xl mx-auto space-y-10 md:space-y-20 relative z-10">
-          {/* Headline and sub-line */}
-          <div className="text-center space-y-4 md:space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Loved by builders. Empowering CISOs.
-            </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
-              Like the explorers who uncovered the secrets of the cosmos, Cylestio reveals the hidden secrets of AI workflows.
-            </p>
-          </div>
-
-          {/* Cards - Improved layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-            {/* Card 1 */}
-            <div className="cosmic-card rounded-2xl p-6 md:p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex justify-center mb-5 md:mb-6">
-                  <img src="/images/cards_icons/card_icon_1_opt.png" alt="Monitoring Icon" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-white group-hover:text-blue-200 transition-colors">End-to-End Monitoring</h3>
-                <p className="text-sm md:text-base text-blue-100/80 leading-relaxed">
-                  Track every agent: tool usage, LLM calls, data flows and user actions - in real time.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="cosmic-card rounded-2xl p-6 md:p-8 shadow-lg shadow-purple-500/5 hover:shadow-purple-500/20 transition-all border border-purple-500/10 hover:border-purple-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex justify-center mb-5 md:mb-6">
-                  <img src="/images/cards_icons/card_icon_2_opt.png" alt="DevSecOps Icon" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-white group-hover:text-purple-200 transition-colors">DevSecOps for AI Agents</h3>
-                <p className="text-sm md:text-base text-blue-100/80 leading-relaxed">
-                  Security & compliance baked into every stage of your AI lifecycle - from Development to Production.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="cosmic-card rounded-2xl p-6 md:p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col md:col-span-2 lg:col-span-1 transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="flex justify-center mb-5 md:mb-6">
-                  <img src="/images/cards_icons/card_icon_3_opt.png" alt="Open-Source Icon" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-white group-hover:text-blue-200 transition-colors">Open-Source & Enterprise</h3>
-                <p className="text-sm md:text-base text-blue-100/80 leading-relaxed">
-                  <span className="font-bold">Start free & local</span>. Unlock advanced threat analytics and fleet-wide insights as you scale - meeting <span className="font-bold">SOC2, GDPR, HIPAA</span> and more.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases Section */}
-      <UseCasesSection />
-
-      {/* Product Features */}
-      <section id="quick-start" className="relative container mx-auto px-4 sm:px-6 py-16 md:py-32">
+      {/* Product Features - MOVED UP */}
+      <section id="quick-start" className="relative container mx-auto px-4 sm:px-6 py-10 md:py-20">
         <div className="max-w-5xl mx-auto">
           
           <div className="space-y-2 sm:space-y-4 mb-8 sm:mb-10 text-center">
@@ -984,6 +924,72 @@ cylestio_monitor.stop_monitoring()`,
         </div>
       </section>
 
+      {/* Value Proposition Section */}
+      <section className="relative container mx-auto px-4 sm:px-6 py-16 md:py-32">
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 bg-blue-500/5 blur-3xl rounded-full opacity-30 w-1/2 h-1/2 mx-auto"></div>
+        
+        <div className="max-w-6xl mx-auto space-y-10 md:space-y-20 relative z-10">
+          {/* Headline and sub-line */}
+          <div className="text-center space-y-4 md:space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Loved by builders. Empowering CISOs.
+            </h2>
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto font-light leading-relaxed">
+              Like the explorers who uncovered the secrets of the cosmos, Cylestio reveals the hidden secrets of AI workflows.
+            </p>
+          </div>
+
+          {/* Cards - Improved layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+            {/* Card 1 */}
+            <div className="cosmic-card rounded-2xl p-6 md:p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="flex justify-center mb-5 md:mb-6">
+                  <img src="/images/cards_icons/card_icon_1_opt.png" alt="Monitoring Icon" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-white group-hover:text-blue-200 transition-colors">End-to-End Monitoring</h3>
+                <p className="text-sm md:text-base text-blue-100/80 leading-relaxed">
+                  Track every agent: tool usage, LLM calls, data flows and user actions - in real time.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="cosmic-card rounded-2xl p-6 md:p-8 shadow-lg shadow-purple-500/5 hover:shadow-purple-500/20 transition-all border border-purple-500/10 hover:border-purple-500/20 h-full flex flex-col transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="flex justify-center mb-5 md:mb-6">
+                  <img src="/images/cards_icons/card_icon_2_opt.png" alt="DevSecOps Icon" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-white group-hover:text-purple-200 transition-colors">DevSecOps for AI Agents</h3>
+                <p className="text-sm md:text-base text-blue-100/80 leading-relaxed">
+                  Security & compliance baked into every stage of your AI lifecycle - from Development to Production.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="cosmic-card rounded-2xl p-6 md:p-8 shadow-lg shadow-blue-500/5 hover:shadow-blue-500/20 transition-all border border-blue-500/10 hover:border-blue-500/20 h-full flex flex-col md:col-span-2 lg:col-span-1 transform hover:-translate-y-1 duration-300 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent rounded-2xl opacity-100 group-hover:opacity-80 transition-opacity"></div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="flex justify-center mb-5 md:mb-6">
+                  <img src="/images/cards_icons/card_icon_3_opt.png" alt="Open-Source Icon" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+                </div>
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-white group-hover:text-blue-200 transition-colors">Open-Source & Enterprise</h3>
+                <p className="text-sm md:text-base text-blue-100/80 leading-relaxed">
+                  <span className="font-bold">Start free & local</span>. Unlock advanced threat analytics and fleet-wide insights as you scale - meeting <span className="font-bold">SOC2, GDPR, HIPAA</span> and more.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <UseCasesSection />
+
       {/* Community Section */}
       <section id="community" className="relative container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-32">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
@@ -992,51 +998,23 @@ cylestio_monitor.stop_monitoring()`,
             Join the Cylestio Community
           </h2>
           
-          {/* Primary action buttons with enhanced styling - centered */}
-          <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-5 mb-16 md:mb-32 w-full max-w-3xl mx-auto">
-            <a 
-              href="https://github.com/orgs/cylestio/discussions" 
-              className="group flex items-center justify-center space-x-2 sm:space-x-3 bg-blue-600 px-4 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-medium transition duration-300 hover:bg-blue-700 flex-1"
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-blue-400 opacity-50 blur-xl group-hover:opacity-70 transition-opacity duration-300"></div>
-                <Github className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" />
-              </div>
-              <span>GitHub Discussions</span>
-            </a>
-            <a 
-              href="https://join.slack.com/t/cylestio-community/shared_invite/zt-35dopqtrk-SnBn_2P0TusyA40d1T5yLg" 
-              className="group flex items-center justify-center space-x-2 sm:space-x-3 bg-purple-600 px-4 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-medium transition duration-300 hover:bg-purple-700 flex-1"
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-purple-400 opacity-50 blur-xl group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
-                  </svg>
-                </div>
-              </div>
-              <span>Slack Channel</span>
-            </a>
+          {/* Primary action button - centered */}
+          <div className="flex justify-center mb-16 md:mb-32 w-full max-w-xl mx-auto">
             <a 
               href="https://discord.gg/xuvaeXfg" 
-              className="group flex items-center justify-center space-x-2 sm:space-x-3 bg-indigo-600 px-4 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-medium transition duration-300 hover:bg-indigo-700 flex-1"
+              className="group flex items-center justify-center space-x-3 sm:space-x-4 bg-indigo-600 px-6 sm:px-10 py-4 sm:py-5 rounded-xl text-base sm:text-xl font-medium transition duration-300 hover:bg-indigo-700 w-full max-w-md"
               target="_blank" 
               rel="noopener noreferrer"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-indigo-400 opacity-50 blur-xl group-hover:opacity-70 transition-opacity duration-300"></div>
-                <div className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 127.14 96.36" fill="currentColor">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 relative z-10 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 127.14 96.36" fill="currentColor">
                     <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
                   </svg>
                 </div>
               </div>
-              <span>Discord Server</span>
+              <span>Join Our Discord Server</span>
             </a>
           </div>
           
