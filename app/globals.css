@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-brand-night text-brand-steel-300 antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-white;
+  }
+}
+
+/* 
+  Re-defining animation classes here to ensure they are correctly applied 
+  after resetting the global stylesheet.
+*/
+.animate-in {
+  animation: fade-in-up 0.8s ease-in-out forwards;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in-fast {
+  animation: fade-in-up 0.5s ease-in-out forwards;
+}
+
+.animate-in-slow {
+  animation: fade-in-up 1.2s ease-in-out forwards;
+}
+
 .cosmic-bg {
   background: radial-gradient(circle at 50% 50%, #020817 0%, #000 100%);
   background-attachment: fixed;
@@ -269,10 +306,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply text-white bg-black;
   }
 }
 
