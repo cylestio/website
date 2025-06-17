@@ -111,7 +111,7 @@ export default function StealthPageV2() {
           <div className="w-full max-w-md text-left lg:w-1/2 opacity-0 animate-new-fade-in-up" style={{ animationDelay: '700ms' }}>
             <div className="h-full flex p-px rounded-xl bg-gradient-to-b from-white/10 to-transparent">
               <div className="p-8 text-center bg-brand-steel-800/50 rounded-xl backdrop-blur-lg lg:text-left">
-                <h2 className="text-2xl font-bold text-white lg:text-3xl font-display">Shh... The rules of security are changing. Autonomously.</h2>
+                <h2 className="text-2xl font-bold text-white lg:text-3xl font-display">The rules of security are changing. Autonomously.</h2>
                 <p className="mt-4 text-base text-brand-steel-300 lg:text-lg">
                   Your agentic forces aren't ready to be unleashed. We're here to change that.
                 </p>
