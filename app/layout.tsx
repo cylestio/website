@@ -50,20 +50,27 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+      </head>
+      <body className={`${inter.variable} ${sora.variable} font-sans`} suppressHydrationWarning>
+        {children}
         
         {/* Google Analytics */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-E54G06JMKM" strategy="afterInteractive" />
+        <Script 
+          async 
+          src="https://www.googletagmanager.com/gtag/js?id=G-E54G06JMKM" 
+          strategy="afterInteractive" 
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-E54G06JMKM');
+            gtag('config', 'G-E54G06JMKM', {
+              page_title: document.title,
+              page_location: window.location.href
+            });
           `}
         </Script>
-      </head>
-      <body className={`${inter.variable} ${sora.variable} font-sans`} suppressHydrationWarning>
-        {children}
       </body>
     </html>
   );

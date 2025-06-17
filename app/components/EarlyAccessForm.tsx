@@ -63,6 +63,16 @@ export default function EarlyAccessForm() {
 
       if (response.ok) {
         setStatus('success');
+        
+        // Track successful form submission in Google Analytics
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'early_access_signup', {
+            event_category: 'form',
+            event_label: 'early_access',
+            value: 1
+          });
+        }
+        
         // Reset form
         setFormData({
           email: '',
@@ -72,11 +82,29 @@ export default function EarlyAccessForm() {
       } else {
         setStatus('error');
         setErrorMessage(result.error || 'Something went wrong. Please try again.');
+        
+        // Track form errors in Google Analytics
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'form_error', {
+            event_category: 'form',
+            event_label: 'early_access_error',
+            value: result.error || 'unknown_error'
+          });
+        }
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setStatus('error');
       setErrorMessage('Network error. Please check your connection and try again.');
+      
+      // Track network errors in Google Analytics
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'network_error', {
+          event_category: 'form',
+          event_label: 'early_access_network_error',
+          value: 'network_error'
+        });
+      }
     }
   };
   

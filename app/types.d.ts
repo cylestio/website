@@ -28,4 +28,41 @@ declare module '*.jpg' {
 declare module '*.jpeg' {
   const content: string;
   export default content;
-} 
+}
+
+// Global types
+declare global {
+  interface Window {
+    gtag: (
+      command: 'config' | 'event' | 'js' | 'set',
+      targetId: string | Date,
+      config?: any
+    ) => void;
+    dataLayer: any[];
+  }
+}
+
+// Blog post types
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  readTime: string;
+  tags: string[];
+  content: string;
+  image?: string;
+}
+
+interface BlogMetadata {
+  title: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  readTime: string;
+  tags: string[];
+  image?: string;
+}
+
+export type { BlogPost, BlogMetadata }; 
