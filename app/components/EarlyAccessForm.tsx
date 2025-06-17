@@ -127,7 +127,7 @@ export default function EarlyAccessForm() {
     <div className="h-full w-full p-6 space-y-6 border rounded-lg border-brand-steel-700 bg-brand-steel-800/30 backdrop-blur-lg sm:p-8">
       <div className="text-center">
           <h3 className="text-xl font-bold text-white sm:text-2xl">Don't get left behind.</h3>
-          <p className="mt-2 text-sm text-brand-steel-300 sm:text-base">Spots are limited. Reserve your early access.</p>
+          <p className="mt-2 text-sm text-brand-steel-300 sm:text-base">Reserve your early access or sign up for a call with one of our product experts.</p>
       </div>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Honeypot field - hidden from users */}
