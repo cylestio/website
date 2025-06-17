@@ -82,12 +82,12 @@ export default function EarlyAccessForm() {
   
   if (status === 'success') {
     return (
-      <div className="text-center p-6 border border-brand-steel-600 bg-brand-steel-800/50 rounded-lg">
-        <h3 className="text-lg font-semibold text-white">Thank You!</h3>
-        <p className="text-brand-steel-300 mt-2">Your early access request has been submitted successfully. We'll be in touch soon!</p>
+      <div className="text-center p-8 border border-brand-steel-600 bg-brand-steel-800/50 rounded-lg space-y-4">
+        <h3 className="text-2xl font-semibold text-white sm:text-3xl">Thank You!</h3>
+        <p className="text-brand-steel-300 text-base sm:text-lg">Your early access request has been submitted successfully. We'll be in touch soon!</p>
         <button
           onClick={() => setStatus('idle')}
-          className="mt-4 text-sm text-brand-blue hover:text-brand-blue/80 transition-colors"
+          className="text-base text-brand-blue hover:text-brand-blue/80 transition-colors sm:text-lg"
         >
           Submit another request
         </button>
@@ -96,12 +96,12 @@ export default function EarlyAccessForm() {
   }
 
   return (
-    <div className="h-full w-full p-6 space-y-4 border rounded-lg border-brand-steel-700 bg-brand-steel-800/30 backdrop-blur-lg">
+    <div className="h-full w-full p-6 space-y-6 border rounded-lg border-brand-steel-700 bg-brand-steel-800/30 backdrop-blur-lg sm:p-8">
       <div className="text-center">
-          <h3 className="text-xl font-bold text-white">Don't get left behind.</h3>
-          <p className="mt-1 text-sm text-brand-steel-300">Spots are limited. Reserve your early access.</p>
+          <h3 className="text-xl font-bold text-white sm:text-2xl">Don't get left behind.</h3>
+          <p className="mt-2 text-sm text-brand-steel-300 sm:text-base">Spots are limited. Reserve your early access.</p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Honeypot field - hidden from users */}
         <input
           type="text"
@@ -114,7 +114,7 @@ export default function EarlyAccessForm() {
         />
         
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-steel-400" />
+          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-steel-400" />
           <input
             type="email"
             name="email"
@@ -123,21 +123,21 @@ export default function EarlyAccessForm() {
             onChange={handleChange}
             required
             disabled={status === 'submitting'}
-            className="w-full pl-10 pr-4 py-3 text-gray-900 bg-white border border-brand-steel-600 rounded-md focus:ring-2 focus:ring-brand-blue focus:border-brand-blue transition-colors outline-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-gray-400"
+            className="w-full pl-12 pr-4 py-4 text-gray-900 bg-white border border-brand-steel-600 rounded-md focus:ring-2 focus:ring-brand-blue focus:border-brand-blue transition-colors outline-none disabled:opacity-50 disabled:cursor-not-allowed placeholder:text-gray-400 text-base sm:text-lg"
           />
         </div>
         
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white transition-colors duration-300 border rounded-md shadow-lg bg-brand-blue hover:bg-brand-blue/90 border-brand-blue group disabled:bg-brand-steel-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full inline-flex items-center justify-center px-6 py-4 text-base font-medium text-white transition-colors duration-300 border rounded-md shadow-lg bg-brand-blue hover:bg-brand-blue/90 border-brand-blue group disabled:bg-brand-steel-600 disabled:cursor-not-allowed disabled:opacity-50 sm:text-lg"
         >
           {status === 'submitting' ? 'Sending...' : 'Get an Invite'}
-          <ChevronRight className="w-4 h-4 ml-2 -ml-1 group-hover:translate-x-1 transition-transform" />
+          <ChevronRight className="w-5 h-5 ml-2 -ml-1 group-hover:translate-x-1 transition-transform" />
         </button>
         
         {errorMessage && (
-          <p className="text-sm text-red-400 text-center">
+          <p className="text-sm text-red-400 text-center sm:text-base">
             {errorMessage}
           </p>
         )}

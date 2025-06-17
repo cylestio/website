@@ -61,7 +61,7 @@ const RotatingBeam = () => (
 );
 
 const Footer = () => (
-  <footer className="absolute bottom-0 left-0 right-0 z-30 py-6 px-4 sm:px-6 lg:px-8">
+  <footer className="relative z-30 py-6 px-4 sm:px-6 lg:px-8 mt-12 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:mt-0">
     <div className="mx-auto flex max-w-7xl justify-between text-sm text-brand-steel-400 opacity-0 animate-new-fade-in-up" style={{ animationDelay: '1200ms' }}>
       <p>&copy; {new Date().getFullYear()} Cylestio Inc. All rights reserved.</p>
       <a href="mailto:info@cylestio.com" className="hover:text-white transition-colors">
@@ -92,27 +92,27 @@ export default function StealthPageV2() {
   if (!mounted) return null;
 
   return (
-    <main className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-brand-night text-white antialiased">
+    <main className="relative flex flex-col min-h-screen overflow-hidden bg-brand-night text-white antialiased">
       <GridBackground />
       <RotatingBeam />
       <Spotlight />
       
-      <div className="relative z-20 flex flex-col items-center justify-center w-full flex-grow px-4 pt-20 text-center sm:pt-24">
+      <div className="relative z-20 flex flex-col items-center justify-center w-full flex-grow px-4 py-12 text-center sm:py-16 lg:py-20">
         <div className="max-w-4xl opacity-0 animate-new-fade-in-up" style={{ animationDelay: '300ms' }}>
-          <h1 className="text-5xl font-bold tracking-tighter text-transparent md:text-7xl lg:text-8xl font-display bg-clip-text bg-gradient-to-b from-white to-brand-steel-300">
+          <h1 className="text-5xl font-bold tracking-tighter text-transparent sm:text-6xl md:text-7xl lg:text-8xl font-display bg-clip-text bg-gradient-to-b from-white to-brand-steel-300">
             Cylestio
           </h1>
-          <p className="max-w-2xl mx-auto mt-6 text-lg text-brand-steel-300 md:text-xl" style={{ animationDelay: '500ms' }}>
+          <p className="max-w-2xl mx-auto mt-6 text-lg text-brand-steel-300 sm:mt-8 sm:text-xl md:text-2xl" style={{ animationDelay: '500ms' }}>
             Runtime Security for the Agentic Era.
           </p>
         </div>
 
-        <div className="flex flex-col items-center w-full max-w-6xl gap-8 mt-12 lg:flex-row lg:items-stretch lg:justify-center lg:gap-16 lg:mt-16">
+        <div className="flex flex-col items-center w-full max-w-6xl gap-8 mt-12 sm:gap-10 sm:mt-16 lg:flex-row lg:items-stretch lg:justify-center lg:gap-16 lg:mt-20">
           <div className="w-full max-w-md text-left lg:w-1/2 opacity-0 animate-new-fade-in-up" style={{ animationDelay: '700ms' }}>
             <div className="h-full flex p-px rounded-xl bg-gradient-to-b from-white/10 to-transparent">
-              <div className="p-8 text-center bg-brand-steel-800/50 rounded-xl backdrop-blur-lg lg:text-left">
-                <h2 className="text-2xl font-bold text-white lg:text-3xl font-display">The rules of security are changing. Autonomously.</h2>
-                <p className="mt-4 text-base text-brand-steel-300 lg:text-lg">
+              <div className="p-8 text-center bg-brand-steel-800/50 rounded-xl backdrop-blur-lg lg:p-10 lg:text-left">
+                <h2 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl font-display">The rules of security are changing. Autonomously.</h2>
+                <p className="mt-4 text-base text-brand-steel-300 sm:mt-6 sm:text-lg lg:text-xl">
                   Your agentic forces aren't ready to be unleashed. We're here to change that.
                 </p>
               </div>

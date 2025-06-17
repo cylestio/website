@@ -15,11 +15,11 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Cylestio | Agentic AI Runtime Protection",
-  description: "The future is agentic. Security must be too. Cylestio is defining the DevSecAgentOps paradigm, building the future of AI cybersecurity.",
+  title: "Cylestio | Runtime Security for the Agentic Era",
+  description: "The rules of cyber security are changing. Autonomously.",
   openGraph: {
-    title: "Cylestio | Agentic AI Runtime Protection",
-    description: "The future is agentic. Security must be too. Cylestio is defining the DevSecAgentOps paradigm, building the future of AI cybersecurity.",
+    title: "Cylestio | Runtime Security for the Agentic Era",
+    description: "The rules of cyber security are changing. Autonomously.",
     url: "https://cylestio.com", // Replace with actual URL when live
     siteName: "Cylestio",
     images: [
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cylestio | Agentic AI Runtime Protection",
-    description: "The future is agentic. Security must be too. Cylestio is defining the DevSecAgentOps paradigm, building the future of AI cybersecurity.",
+    title: "Cylestio | Runtime Security for the Agentic Era",
+    description: "The rules of cyber security are changing. Autonomously.",
     images: ["/og-image.png"], // Make sure to create this image
   },
 };
